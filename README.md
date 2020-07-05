@@ -6,7 +6,7 @@ A little project to help me get familiar with React-Native and support my normal
 
 ## Features
 - Recipe Database
-  - Rating
+  - Custom tags
   - Date last eaten
   - Personalized notes
 - Weekly Meal Plan

@@ -6,10 +6,11 @@ import * as React from 'react';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import HomeScreen from '../screens/home/HomeScreen';
-import RecipeScreen from '../screens/recipe/RecipeScreen';
+import RecipesScreen from '../screens/recipes/RecipesScreen';
 import MealPlanScreen from '../screens/meal-plan/MealPlanScreen';
-import GroceryScreen from '../screens/grocery/GroceryScreen';
-import { BottomTabParamList, HomeParamList, RecipeParamList, MealPlanParamList, GroceryParamList } from '../types';
+import GroceriesScreen from '../screens/groceries/GroceriesScreen';
+import { BottomTabParamList, HomeParamList, RecipesParamList, MealPlanParamList, GroceriesParamList } from '../types';
+import RecipeDetailScreen from '../screens/recipes/components/RecipeDetailScreen';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -24,28 +25,28 @@ export default function BottomTabNavigator() {
         name="Home"
         component={HomeNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="ios-home" color={color} />,
         }}
       />
       <BottomTab.Screen
-        name="Recipe"
-        component={RecipeNavigator}
+        name="Recipes"
+        component={RecipesNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="ios-cafe" color={color} />,
         }}
       />
       <BottomTab.Screen
         name="MealPlan"
         component={MealPlanNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="ios-alarm" color={color} />,
         }}
       />
       <BottomTab.Screen
-        name="Grocery"
-        component={GroceryNavigator}
+        name="Groceries"
+        component={GroceriesNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="ios-basket" color={color} />,
         }}
       />
     </BottomTab.Navigator>
@@ -54,7 +55,7 @@ export default function BottomTabNavigator() {
 
 // You can explore the built-in icon families and icons on the web at:
 // https://icons.expo.fyi/
-function TabBarIcon(props: { name: string; color: string }) {
+export function TabBarIcon(props: { name: string; color: string }) {
   return <Ionicons size={30} style={{ marginBottom: -3 }} {...props} />;
 }
 
@@ -74,17 +75,22 @@ function HomeNavigator() {
   );
 }
 
-const RecipeStack = createStackNavigator<RecipeParamList>();
+const RecipesStack = createStackNavigator<RecipesParamList>();
 
-function RecipeNavigator() {
+function RecipesNavigator() {
   return (
-    <RecipeStack.Navigator>
-      <RecipeStack.Screen
-        name="RecipeScreen"
-        component={RecipeScreen}
-        options={{ headerTitle: 'Recipe' }}
+    <RecipesStack.Navigator>
+      <RecipesStack.Screen
+        name="RecipesScreen"
+        component={RecipesScreen}
+        options={{ headerTitle: 'Recipes' }}
       />
-    </RecipeStack.Navigator>
+      <RecipesStack.Screen
+        name="RecipeDetailScreen"
+        component={RecipeDetailScreen}
+        options={{ headerTitle: 'Recipes' }}
+      />
+    </RecipesStack.Navigator>
   );
 }
 
@@ -102,16 +108,16 @@ function MealPlanNavigator() {
   );
 }
 
-const GroceryStack = createStackNavigator<GroceryParamList>();
+const GroceriesStack = createStackNavigator<GroceriesParamList>();
 
-function GroceryNavigator() {
+function GroceriesNavigator() {
   return (
-    <GroceryStack.Navigator>
-      <GroceryStack.Screen
-        name="GroceryScreen"
-        component={GroceryScreen}
-        options={{ headerTitle: 'Grocery' }}
+    <GroceriesStack.Navigator>
+      <GroceriesStack.Screen
+        name="GroceriesScreen"
+        component={GroceriesScreen}
+        options={{ headerTitle: 'Groceries' }}
       />
-    </GroceryStack.Navigator>
+    </GroceriesStack.Navigator>
   );
 }

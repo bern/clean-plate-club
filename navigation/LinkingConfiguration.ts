@@ -11,9 +11,9 @@ export default {
               HomeScreen: 'home',
             },
           },
-          Recipe: {
+          Recipes: {
             screens: {
-              RecipeScreen: 'recipe',
+              RecipesScreen: 'recipes',
             },
           },
           MealPlan: {
@@ -21,9 +21,9 @@ export default {
               MealPlanScreen: 'meal-plan',
             },
           },
-          Grocery: {
+          Groceries: {
             screens: {
-              GroceryScreen: 'grocery',
+              GroceriesScreen: 'groceries',
             },
           },
         },
